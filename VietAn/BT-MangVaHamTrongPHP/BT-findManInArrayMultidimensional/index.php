@@ -52,9 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == 'POST') {
                     <td class="message">No elemental in matrix</td>
                 </tr>
             <?php endif ?>
-            <?php for ($indexRow = 0;
-            $indexRow < $row;
-            $indexRow++): ?>
+            <?php for ($indexRow = 0;$indexRow < $row;$indexRow++): ?>
             <tr>
                 <?php for ($indexColumn = 0; $indexColumn < $column; $indexColumn++): ?>
                     <td><input type="number" name="<?php echo $indexRow . '' . $indexColumn; ?>"></td>
