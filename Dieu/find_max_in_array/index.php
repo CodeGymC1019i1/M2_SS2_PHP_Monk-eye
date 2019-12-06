@@ -47,20 +47,20 @@ function findMax($array){
             <input type="submit" name="submit" value="submit"> <br>
         </fieldset>
         <table border="0">
-            <caption><h2>Matrix</h2></caption>
             <?php if (!empty($row) && !empty($col)): ?>
+                <caption><h2>Matrix</h2></caption>
                 <tr>
                     <td class="message">No elemental in matrix</td>
                 </tr>
-            <?php endif ?>
+            <?php endif; ?>
             <?php for ($indexRow = 0;$indexRow < $row;$indexRow++): ?>
             <tr>
                 <?php for ($indexCol = 0; $indexCol < $col; $indexCol++): ?>
                     <td><input type="number" name="<?php echo $indexRow.''.$indexCol; ?>"></td>
                 <?php endfor; ?>
             </tr>
+            <?php endfor; ?>
         </table>
-        <?php endfor; ?>
         <h2>Max in matrix: </h2>
         <?php findMax($array); ?>
     </form>
