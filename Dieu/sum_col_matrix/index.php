@@ -1,12 +1,16 @@
 <?php
-function sum_diagonal_arr($array)
+function sum_col_arr($array,$index)
 {
-    $sum = 0;
-    for ($i = 0; $i < count($array); $i++)
-        $sum += $array[$i][$i];
-    echo $sum;
-}
+    if ($index > count($array)) {
+        echo "matrix chi co " . count($array) . " cot";
+    } else {
+        $sum = 0;
+        for ($i = 0; $i < count($array); $i++)
+            $sum += $array[$i][$index];
+        echo "Tong cot ".($index+1).' = '.$sum;
 
+    }
+}
 $matrix = [];
 $side = 0;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -19,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $matrix[$i][$j] = $_POST[$i . '' . $j];
         }
     }
+    $index = $_POST["index"];
 }
 
 ?>
@@ -40,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <table border="0">
         <?php if (!empty($side)): ?>
 
-                <caption>insert elements into matrix</caption>
+            <caption>insert elements into matrix</caption>
 
         <?php endif; ?>
         <?php for ($i = 0; $i < $side; $i++): ?>
@@ -51,12 +56,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </tr>
         <?php endfor; ?>
     </table>
+    <?php if (!empty($side)): ?>
+
+        <caption>insert colum index</caption>
+        <input type="number" name="index" value = "<?php echo $_POST[$i."".$j] ?>" >
+
+    <?php endif; ?>
     <?php
-    if (!empty($side)){
-    echo "tong hang cheo ma tran la ";
-    sum_diagonal_arr($matrix);
-    }
-    ?>
+    echo "<br>";
+    if (!empty($index))
+        sum_col_arr($matrix,$index-1);
+     ?>
+
 
 
 </form>
@@ -64,3 +75,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+
